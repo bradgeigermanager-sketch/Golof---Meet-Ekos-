@@ -1,0 +1,261 @@
+Below is the full counterintelligence‑workflow layer that plugs directly into the existing fraud‑detection DAG, turning a failed attack on the hidden official into a *structured, automated, intelligence‑harvesting pipeline*.  
+This is strictly **security‑studies analysis** involving a violent extremist organization (VEO). As required, I’ll note that VEOs are responsible for severe harm, loss of life, and human rights violations; this analysis treats them solely as hostile actors within a defensive counterintelligence framework.
+
+No operational guidance is provided — only architectural logic.
+
+---
+
+# Core Takeaway  
+**Adding a counterintelligence spine to the fraud‑detection DAG.**  
+The failed attack becomes a *data‑rich anomaly event* that triggers a multi‑stage workflow:
+
+1. **Detection**  
+2. **Leak‑path inference**  
+3. **Compartment narrowing**  
+4. **Canary‑data injection**  
+5. **Network mapping**  
+6. **Exploit‑vs‑neutralize decision**
+
+This workflow integrates seamlessly with the existing nodes like `DATA_CONSIST`, `RISK_AGG`, `CASE_MGMT`, and `AUDIT_LOG`.
+
+---
+
+# 1. New Counterintelligence Nodes  
+These nodes plug into the DAG as a **parallel CI branch** triggered when the system detects an attack on the hidden official.
+
+### New CI Nodes  
+- **CI_TRIGGER** — activates when a failed attack occurs in a secret environment.  
+- **LEAK_INFER** — analyzes what information the attackers must have possessed.  
+- **COMPART_MAP** — maps which internal compartments contain that information.  
+- **CANDIDATE_SET** — produces a list of individuals/systems that could have leaked.  
+- **CANARY_INJECT** — seeds unique false data fingerprints into each compartment.  
+- **OBSERVE_PROPAGATION** — monitors terrorist behavior for signs of which fingerprint leaked.  
+- **NETWORK_EXPAND** — uses leak propagation to map the hostile network.  
+- **CI_DECISION** — determines whether to exploit the leak longer or neutralize immediately.
+
+These nodes form a **CI sub‑DAG** that runs alongside the fraud‑detection DAG.
+
+---
+
+# 2. How the CI Workflow Connects to The Existing DAG  
+The fraud‑detection DAG already has:
+
+- **Ingestion layer** (`ID_IN`, `DOC_IN`, `BIO_IN`)  
+- **Signal layer** (`DATA_CONSIST`, `DOC_AUTH`, `BEHAV_ANOM`)  
+- **Scoring layer** (`RISK_AGG`)  
+- **Decision layer** (`CASE_MGMT`)  
+- **Governance layer** (`AUDIT_LOG`, `POLICY_ENF`)
+
+The CI workflow plugs in at the **Decision layer**:
+
+```
+CASE_MGMT → CI_TRIGGER → LEAK_INFER → COMPART_MAP → CANDIDATE_SET
+```
+
+Then it branches into the deception‑ops cycle:
+
+```
+CANDIDATE_SET → CANARY_INJECT → OBSERVE_PROPAGATION → NETWORK_EXPAND → CI_DECISION
+```
+
+Finally, it loops back into governance:
+
+```
+CI_DECISION → AUDIT_LOG → POLICY_ENF
+```
+
+This creates a **closed‑loop CI system** that continuously refines its understanding of the hostile network.
+
+---
+
+# 3. Full Counterintelligence Workflow (Step‑by‑Step)
+
+## Step 1 — CI_TRIGGER  
+Triggered when the system detects:
+
+- A failed attack  
+- In a secret location  
+- Against the hidden official
+
+This node activates the CI branch.
+
+---
+
+## Step 2 — LEAK_INFER  
+This node determines:
+
+- What exact information the attackers must have known  
+- How precise their intel was  
+- Which internal data structures match that intel
+
+This produces a **Leak Signature**.
+
+---
+
+## Step 3 — COMPART_MAP  
+This node maps all compartments containing the leaked information:
+
+- Personnel lists  
+- Movement schedules  
+- Secure communications  
+- Classified briefings  
+- Contractor access logs
+
+Output: **Compartment Set**.
+
+---
+
+## Step 4 — CANDIDATE_SET  
+This node identifies:
+
+- Individuals with access  
+- Systems with access  
+- External entities with partial access
+
+Output: **Suspect Graph**.
+
+---
+
+## Step 5 — CANARY_INJECT  
+This node seeds **unique false fingerprints** into each compartment:
+
+- Slightly wrong location  
+- Slightly wrong timing  
+- Slightly wrong cover identity  
+- Slightly wrong operational detail
+
+Each compartment gets a **distinct canary**.
+
+---
+
+## Step 6 — OBSERVE_PROPAGATION  
+This node monitors:
+
+- Terrorist chatter  
+- Movement patterns  
+- Planning changes  
+- Attempted follow‑up attacks  
+- Digital signals  
+- Behavioral anomalies
+
+Whichever fingerprint appears in hostile behavior identifies the compromised compartment.
+
+Output: **Leak Path Identified**.
+
+---
+
+## Step 7 — NETWORK_EXPAND  
+This node uses the leak path to:
+
+- Map the terrorist network  
+- Identify communication chains  
+- Infer hierarchy  
+- Detect safe houses  
+- Identify secondary leaks  
+- Build a full hostile graph
+
+Output: **Hostile Network Map**.
+
+---
+
+## Step 8 — CI_DECISION  
+This node decides:
+
+- **Exploit** the leak longer  
+  - Continue feeding controlled data  
+  - Map more nodes  
+  - Identify leadership  
+  - Prepare a mass takedown
+
+or
+
+- **Neutralize** immediately  
+  - Remove the mole  
+  - Lock down systems  
+  - Publicize the failed attack  
+  - Score a political win
+
+Output: **CI Action Plan**.
+
+---
+
+# 4. DAG Integration Diagram (Text‑Based)
+
+```
+                    ┌──────────────────────┐
+                    │      CASE_MGMT       │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │      CI_TRIGGER      │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │      LEAK_INFER      │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │     COMPART_MAP      │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │    CANDIDATE_SET     │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │    CANARY_INJECT     │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ OBSERVE_PROPAGATION  │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │    NETWORK_EXPAND    │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │     CI_DECISION      │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │      AUDIT_LOG       │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │     POLICY_ENF       │
+                    └──────────────────────┘
+```
+
+---
+
+# 5. The Non‑Obvious Insight  
+**The fraud‑detection DAG becomes a counterintelligence engine.**  
+The failed attack is not just an anomaly — it is a *structured intelligence event* that the DAG can exploit to:
+
+- Identify leaks  
+- Map hostile networks  
+- Run deception operations  
+- Strengthen internal security  
+- Generate political advantage
+
+This transforms the system from **reactive defense** into **active counterintelligence dominance**.
+
+---
+
+# Additionally Available:
+
+- **CI exploit‑vs‑neutralize decision model** — formal payoff matrix for choosing when to burn the mole  
+- **Full JSON/YAML CI‑DAG spec** — machine‑readable DAG for the CI branch  
+- **Microservice architecture for CI nodes** — how each CI node becomes a service  
+- **Integration with your biometric‑fraud pipeline** — unify CI with multi‑modal biometrics
